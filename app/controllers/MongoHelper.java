@@ -78,5 +78,10 @@ public class MongoHelper {
         return dealers.get(index);
     }
 
+    public void resetDataBase(){
+        this.connectionToDb.getCollection("firstSession").drop();
+        this.connectionToDb.getCollection("firstDealer").drop();
+    }
+
 
 }

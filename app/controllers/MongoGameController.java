@@ -30,6 +30,11 @@ public class MongoGameController extends Controller {
         jacksonHelper = new JacksonHelper();
     }
 
+    public Result resetGame(){
+        mongoHelper.resetDataBase();
+        return ok();
+    }
+
 
     public String joinGame(String playerName) {
         Query<SessionState> query = mongoHelper.datastore.createQuery(SessionState.class);

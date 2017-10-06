@@ -40,7 +40,7 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
 
  })
 
-   clientApp.controller('gameController', function ($scope, GameDataWSHandler, $http, $timeout) {
+   clientApp.controller('gameController', function ($scope, GameDataWSHandler, $http,$location, $timeout) {
 
          var BASEURL="http://localhost:9000";
 
@@ -95,6 +95,13 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
            $http.get(BASEURL+"/startGame")
            .then(function(response) {
                $scope.gameSession = response.data;
+           });
+        }
+
+         $scope.resetGame = function(){
+           $http.get(BASEURL+"/resetGame")
+           .then(function(response) {
+               $location.path("/game");
            });
         }
 

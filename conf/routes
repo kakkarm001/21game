@@ -10,6 +10,7 @@ GET     /chat                       controllers.HomeController.chat
 GET     /createSession              controllers.MongoGameController.createSessionIfNotExists
 GET     /getGameData                controllers.MongoGameController.getGameData
 GET     /startGame                  controllers.MongoGameController.startGame
+GET     /resetGame                  controllers.MongoGameController.resetGame
 
 GET     /dealCards/:playerId        controllers.MongoGameController.dealCards(playerId:String)
 GET     /hitCard/:playerId/:bet     controllers.MongoGameController.hitCard(playerId:String, bet:Int)
