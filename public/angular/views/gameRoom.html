@@ -1,0 +1,48 @@
+<div ng-controller="gameController">
+
+    <div class="player" ng-repeat="player in gameSession.players" ng-if="player._id==gameData.playerName" id="playerId">
+
+        <div class=".col-sm-5 .col-md-6">
+
+                <p class="ng-binding">Player: {{player._id}}</p>
+                <p class="ng-binding">Wallet: {{player.money}}</p>
+                <p class="ng-binding">Pot: {{(player.hands[0].betAmount*2) + (player.hands[1].betAmount*2)}}</p>
+        </div>
+
+        <div  class=".col-sm-5 .col-sm-offset-2 .col-md-6 .col-md-offset-0">
+            <div ng-if="gameSession.started==true" ng-repeat="hand in player.hands">
+                <form id="hand.id" ng-if="hand.state!='DISABLED'">
+                    Bet amount:  {{bet}} <br>
+                    <input type="range" name="amount" ng-min="0" ng-max="player.money"
+                           ng-model="bet" />
+                    <button ng-disabled="gameSession.state!='FIRSTDEAL'" ng-click="deal()">Deal</button>
+                    <button ng-disabled="btnDisabled || player.isWaiting || hand.state=='BLACKJACK' || hand.state=='BUST'"
+                            ng-click="userHit(bet)">Hit</button>
+                    <button ng-click="userStay()">Stay</button>
+                    <p class="ng-binding">Your Hand: {{hand.cards}}</p>
+                    <p class="ng-binding">{{hand.winner}}</p>
+                    <p ng-if="hand.state!='PLAYING'" class="ng-binding"> {{hand.state}} </p>
+                </form>
+
+            </div>
+            <div ng-if="gameSession.started==false">
+                <button ng-click="startGame()">Start Game and close game lobby</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4 otherPlayer" ng-repeat="player in gameSession.players"
+         ng-if="player._id!=gameData.playerName" id="player._id">
+
+        <p class="ng-binding">Player type:  {{player.type}}</p>
+        <p class="ng-binding">Player name:  {{player._id}}</p>
+        <p class="ng-binding">Hand:         {{player.hands[0].cards}}</p>
+        <p ng-if="gameSession.second_hand!=null" class="ng-binding">
+                              Second hand:  {{player.hands[1].cards}}</p>
+        <p ng-if="player.type!='BANK'" class="ng-binding">Money:        {{player.money}}
+        <p ng-if="player.hand[0].state!='PLAYING'" class="ng-binding"> {{player.hand[0].state}} </p>
+
+    </div>
+
+</div>

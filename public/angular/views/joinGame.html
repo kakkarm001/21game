@@ -1,0 +1,15 @@
+<div ng-controller="joinGameController">
+
+
+    <div id="footer">
+        <form ng-submit="joinGame()">
+            Your Name:
+            <input type="text" name="user" id="userField"
+                   ng-model="playerName" />
+            <input type="button" id="saySomething" value="Join Game"
+                   ng-click="joinGame()" />
+        </form>
+    </div>
+
+    {{ gameData }}
+</div>

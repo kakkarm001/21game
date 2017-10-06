@@ -1,0 +1,50 @@
+@(url: String)
+<html>
+<head>
+    <!-- SCROLLS -->
+    <!-- load bootstrap and fontawesome via CDN -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+    <link rel="import" href='@routes.Assets.at("angular/views/joinGame.html")'>
+    <link rel="import" href='@routes.Assets.at("angular/views/gameRoom.html")'>
+
+    <!-- SPELLS -->
+    <!-- load angular via CDN -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>-->
+    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>-->
+    <!--<script src="script.js"></script>-->
+    <script type='text/javascript' src='@routes.Assets.at("angular/node_modules/angular/angular.min.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("angular/node_modules/angular-route/angular-route.min.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("angular/node_modules/angular-websocket/dist/angular-websocket.min.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("angular/routes.js")'></script>
+    <title>BlackJack</title>
+</head>
+
+<style>
+div.ngapp {
+    padding-left: 5%;
+    padding-top: 5%;
+}
+div.player {
+    padding-bottom: 2%;
+    border: #cdcdcd medium solid;
+    border-radius: 10px;
+}
+div.otherPlayer {
+    border: #cdcdcd medium solid;
+    border-radius: 10px;
+}
+</style>
+
+<!-- define angular controller -->
+<body ng-app="clientApp">
+
+<!-- MAIN CONTENT AND INJECTED VIEWS -->
+<div class="ngapp" ng-view="">
+    {{ message }}
+    console.log("@url")
+
+    <!-- angular templating -->
+    <!-- this is where content will be injected -->
+</div>

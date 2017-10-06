@@ -1,0 +1,26 @@
+{
+  "name": "packages",
+  "description": "",
+  "version": "0.0.0",
+  "private": true,
+  "author": "Manish Kakkar",
+  "homepage": "",
+  "bugs": {
+    "url": ""
+  },
+  "scripts": {},
+  "dependencies": {
+    "angular": "*",
+    "angular-route": "*",
+    "angular-websocket": "*"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "repository": "",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ]
+}
