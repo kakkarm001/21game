@@ -4,7 +4,7 @@ var clientApp = angular.module('clientApp', ['ngRoute', 'ngWebSocket']);
 clientApp.factory('GameDataWSHandler', function($websocket) {
 
         // Open a WebSocket connection
-        var dataStream = $websocket('ws://21game.scalingo.io/chat');
+        var dataStream = $websocket('ws://localhost:9000/chat');
 
         var collection = [];
 
@@ -41,7 +41,7 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
 
    clientApp.controller('gameController', function ($scope, GameDataWSHandler, $http,$location, $timeout) {
 
-         var BASEURL="http://21game.scalingo.io";
+         var BASEURL="http://localhost:9000";
 
          $scope.gameData=GameDataWSHandler;
          $scope.gameData.addPlayer($scope.gameData.playerName);
@@ -64,7 +64,7 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
          //button functions
          $scope.deal = function(bet){
             if($scope.gameSession.state=="FIRSTDEAL"){
-                $http.get(BASEURL+"/dealCards/"+$scope.gameData.playerName)
+                $http.get("/dealCards/"+$scope.gameData.playerName)
                  .then(function(response) {
                      $scope.gameSession = response.data;
                  });
@@ -74,7 +74,7 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
          $scope.userHit = function(bet){
          if($scope.gameSession.state=="ELIMINATION"){
               $scope.btnDisabled=true;
-               $http.get(BASEURL+"/hitCard/"+$scope.gameData.playerName+"/"+bet)
+               $http.get("/hitCard/"+$scope.gameData.playerName+"/"+bet)
                .then(function(response) {
                    console.log(response.data)
                });
@@ -83,7 +83,7 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
 
          $scope.stand = function(bet){
              if($scope.gameSession.state=="ELIMINATION"){
-                   $http.get(BASEURL+"/stand/"+$scope.gameData.playerName+"/"+bet)
+                   $http.get("/stand/"+$scope.gameData.playerName+"/"+bet)
                    .then(function(response) {
                        console.log(response.data)
                    });
