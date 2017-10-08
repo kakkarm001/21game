@@ -4,7 +4,7 @@ var clientApp = angular.module('clientApp', ['ngRoute', 'ngWebSocket']);
 clientApp.factory('GameDataWSHandler', function($websocket) {
 
         // Open a WebSocket connection
-        var dataStream = $websocket('ws://localhost:9000/chat');
+        var dataStream = $websocket('ws://21game.scalingo.io/chat');
 
         var collection = [];
 
@@ -30,7 +30,7 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
         console.log("testing ws socket");
         GameDataWSHandler.playerName=$scope.playerName;
 
-         $http.get("http://localhost:9000/createSession")
+         $http.get("http://21game.scalingo.io/createSession")
          .then(function(response) {
                console.log(response.data);
                $location.path("/gameRoom");
@@ -42,7 +42,7 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
 
    clientApp.controller('gameController', function ($scope, GameDataWSHandler, $http,$location, $timeout) {
 
-         var BASEURL="http://localhost:9000";
+         var BASEURL="http://21game.scalingo.io";
 
          $scope.gameData=GameDataWSHandler;
          $scope.gameData.addPlayer($scope.gameData.playerName);
