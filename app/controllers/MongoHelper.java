@@ -79,8 +79,8 @@ public class MongoHelper {
     }
 
     public void resetDataBase(){
-        this.connectionToDb.getCollection("firstSession").drop();
-        this.connectionToDb.getCollection("firstDealer").drop();
+        this.connectionToDb.getCollection("DealerState").drop();
+        this.connectionToDb.getCollection("SessionState").drop();
     }
 
 
