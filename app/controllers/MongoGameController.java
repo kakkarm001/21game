@@ -56,8 +56,7 @@ public class MongoGameController extends Controller {
     }
 
     //initiates a game session in the database
-    public Result createSessionIfNotExists() {
-        String name = "makeDynamic";
+    public Result createSessionIfNotExists(String name) {
 
         Query<SessionState> query = mongoHelper.datastore.createQuery(SessionState.class);
         List<SessionState> sessionStates = query.asList();

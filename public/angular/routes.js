@@ -30,7 +30,7 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
         console.log("testing ws socket");
         GameDataWSHandler.playerName=$scope.playerName;
 
-         $http.get("http://21game.scalingo.io/createSession")
+         $http.get("http://21game.scalingo.io/createSession/"+$scope.playerName)
          .then(function(response) {
                console.log(response.data);
                $location.path("/gameRoom");

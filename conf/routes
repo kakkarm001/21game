@@ -7,7 +7,7 @@ GET     /                           controllers.HomeController.index
 GET     /chat                       controllers.HomeController.chat
 
 # Restfull calls
-GET     /createSession              controllers.MongoGameController.createSessionIfNotExists
+GET     /createSession/:playerId    controllers.MongoGameController.createSessionIfNotExists(playerId:String)
 GET     /getGameData                controllers.MongoGameController.getGameData
 GET     /startGame                  controllers.MongoGameController.startGame
 GET     /resetGame                  controllers.MongoGameController.resetGame
