@@ -49,7 +49,7 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
 
         // Function to replicate setInterval using $timeout service.
           function interval(){
-              $http.get(BASEURL+"/getGameData")
+              $http.get("/getGameData")
                .then(function(response) {
                    console.log(response.data);
                    $scope.gameSession = response.data;
@@ -91,14 +91,14 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
             }
 
         $scope.startGame = function(){
-           $http.get(BASEURL+"/startGame")
+           $http.get("/startGame")
            .then(function(response) {
                $scope.gameSession = response.data;
            });
         }
 
          $scope.resetGame = function(){
-           $http.get(BASEURL+"/resetGame")
+           $http.get("/resetGame")
            .then(function(response) {
                $location.path("/game");
            });
