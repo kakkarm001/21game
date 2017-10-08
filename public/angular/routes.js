@@ -30,7 +30,7 @@ clientApp.factory('GameDataWSHandler', function($websocket) {
          console.log("testing ws socket");
          GameDataWSHandler.playerName=$scope.playerName;
 
-         $http.get("/createSession/"+$scope.playerName)
+         $https.get("/createSession/"+$scope.playerName)
          .then(function(response) {
                console.log(response.data);
                $location.path("/gameRoom");
